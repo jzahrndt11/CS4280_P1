@@ -6,4 +6,8 @@
 #ifndef SCANNER_H
 #define SCANNER_H
 
+#include "token.h"
+
+void scanner(struct T1_Token*);
+
 #endif
