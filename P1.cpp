@@ -24,10 +24,10 @@ int main(int argc, char* argv[]) {
     }
 
     // Initialize token struct to correct tokenId
-    eofToken.tokenId = 1001;
-    t1Token.tokenId = 1002;
-    t2Token.tokenId = 1003;
-    t3Token.tokenId = 1004;
+    eofToken->tokenId = 1001;
+    t1Token->tokenId = 1002;
+    t2Token->tokenId = 1003;
+    t3Token->tokenId = 1004;
 
     scanner(t1Token);
 
