@@ -51,6 +51,7 @@ int main(int argc, char* argv[]) {
     FILE* filePointer = fopen(file, "r");
     if (filePointer == NULL) {
         perror("Fatal: Error Opening File!\n");
+        fclose(filePointer);
         return EXIT_FAILURE;
     }
 
