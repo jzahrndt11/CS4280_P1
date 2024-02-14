@@ -12,11 +12,13 @@
 // Main function
 int main(int argc, char* argv[]) {
     // Declare Variables
-    char* file;
-    struct T1_Token t1Token;
-    struct T2_Token t2Token;
-    struct T3_Token t3Token;
-    struct EOF_Token eofToken;
+        char* file;
+        char character;
+
+        struct T1_Token t1Token;
+        struct T2_Token t2Token;
+        struct T3_Token t3Token;
+        struct EOF_Token eofToken;
 
     // check the number of commands
     if (argc > 2) {
