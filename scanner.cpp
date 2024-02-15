@@ -9,5 +9,5 @@
 #include "scanner.h"
 
 void scanner(struct Token token) {
-    printf("%d\n", token.tokenId);
+    printf("%s\n", tokenNames[token.tokenId]);
 }
