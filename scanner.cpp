@@ -8,6 +8,6 @@
 
 #include "scanner.h"
 
-void scanner(struct T1_Token t1Token) {
-    printf("%d\n", t1Token.tokenId);
+void scanner(struct Token token) {
+    printf("%d\n", token.tokenId);
 }
