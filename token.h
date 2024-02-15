@@ -12,7 +12,7 @@ const int MAX_TOKEN_SIZE = 100;
 
 // Enumeration - mainly used to assign names to integral constants
 typedef enum {
-    EOF_Token = 1001,
+    EOF_Token,
     T1_Token = 1002,
     T2_Token = 1003,
     T3_Token = 1004
