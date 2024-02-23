@@ -25,11 +25,6 @@ void testScanner(char* inputFile) {
 
 
     while ((c = fgetc(inputFilePtr)) != EOF) {
-        // Handle New Line
-        if (c == 10) {
-            line++;
-        }
-
         // Skip Comments
         if (comment) {
             if (c == '#') {
@@ -47,12 +42,22 @@ void testScanner(char* inputFile) {
         // Skip Spaces and Prints Token
         if (isspace(c)) {
             if (tokenIndex > 0) { // Found a token
+                // Set token instance string and line #
                 tokenArray[tokenCount].tokenInstance[tokenIndex] = '\0'; // Null-terminate the token string
                 tokenArray[tokenCount].lineNum = line;
-                //scanner(token) // Find TokenId
+
+                // Find TokenId
+                //scanner(token)
+
                 // Print Result
                 printf("%s  :  %d\n", tokenArray[0].tokenInstance, tokenArray[0].lineNum);
                 printf("%s  :  %d\n", tokenArray[1].tokenInstance, tokenArray[1].lineNum);
+
+                // Increment line if new line is found
+                if (c == 10) {
+                    line++;
+                }
+
                 tokenIndex = 0;
                 tokenCount++;
             }
@@ -61,6 +66,12 @@ void testScanner(char* inputFile) {
 
         // Start of token
         tokenArray[tokenCount].tokenInstance[tokenIndex++] = c;
+
+        // Handle New Line
+        printf("%d ", c);
+        if (c == 10) {
+            line++;
+        }
     }
 
 
