@@ -19,10 +19,12 @@ void testScanner(char* inputFile) {
     bool comment = false;
     int tokenIndex = 0;
     int tokenCount = 0;
+    int c;
 
-    for (int i=0; inputFile[i] != '\0'; i++) {
-        //printf("Made it here!\n");
-        char c = inputFile[i];
+    FILE* inputFilePtr = fopen(inputFile, "r");
+
+
+    while ((c = fgetc(inputFilePtr)) != EOF) {
 
         // Handle New Line
         if (c == '\n') {
@@ -43,7 +45,7 @@ void testScanner(char* inputFile) {
             continue;
         }
 
-        // Skip Spaces
+        // Skip Spaces and Prints Token
         if (isspace(c)) {
             if (tokenIndex > 0) { // Found a token
                 tokenArray[tokenCount].tokenInstance[tokenIndex] = '\0'; // Null-terminate the token string
@@ -61,7 +63,7 @@ void testScanner(char* inputFile) {
         tokenArray[tokenCount].tokenInstance[tokenIndex++] = c;
     }
 
-    printf("%s  :  %d", tokenArray[0].tokenInstance, tokenArray[0].lineNum);
+    //("%s  :  %d\n", tokenArray[0].tokenInstance, tokenArray[0].lineNum);
 
 
 }
