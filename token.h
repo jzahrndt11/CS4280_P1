@@ -25,10 +25,10 @@ const char* tokenNames[] = {
         "T3 Token"
 };
 
-struct Token {
+typedef struct {
     TokenId tokenId;
     char tokenInstance[MAX_TOKEN_SIZE];
     int lineNum;
-};
+} Token;
 
 #endif

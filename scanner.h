@@ -8,6 +8,6 @@
 
 #include "token.h"
 
-void scanner(struct Token);
+void scanner(Token);
 
 #endif

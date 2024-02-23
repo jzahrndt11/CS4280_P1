@@ -13,9 +13,9 @@
 int main(int argc, char* argv[]) {
     // Declare Variables
         char* file;
-        char character;
+        int character;
 
-        struct Token token;
+        Token token;
 
     // check the number of commands
     if (argc > 2) {
@@ -24,7 +24,7 @@ int main(int argc, char* argv[]) {
     }
 
     // process command line arguments
-    if (argv[1] != NULL) {
+    if (argv[1] != nullptr) {
         file = argv[1];
     } else {
         // set up keyboard processing so that hereafter the input method is not relevant
@@ -40,7 +40,7 @@ int main(int argc, char* argv[]) {
 
     // make sure file is readable, error otherwise
     FILE* filePointer = fopen(file, "r");
-    if (filePointer == NULL) {
+    if (filePointer == nullptr) {
         perror("Fatal: Error Opening File!\n");
         fclose(filePointer);
         return EXIT_FAILURE;
