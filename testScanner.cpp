@@ -25,7 +25,6 @@ void testScanner(char* inputFile) {
 
 
     while ((c = fgetc(inputFilePtr)) != EOF) {
-
         // Handle New Line
         if (c == '\n') {
             line++;
@@ -52,7 +51,6 @@ void testScanner(char* inputFile) {
                 tokenArray[tokenCount].lineNum = line;
                 //scanner(token) // Find TokenId
                 // Print Result
-                printf("Made it here");
                 printf("%s  :  %d", tokenArray[0].tokenInstance, tokenArray[0].lineNum);
                 tokenIndex = 0;
             }
@@ -63,7 +61,6 @@ void testScanner(char* inputFile) {
         tokenArray[tokenCount].tokenInstance[tokenIndex++] = c;
     }
 
-    //("%s  :  %d\n", tokenArray[0].tokenInstance, tokenArray[0].lineNum);
 
 
 }
