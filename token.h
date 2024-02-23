@@ -15,7 +15,8 @@ typedef enum {
     EOF_Token,
     T1_Token,
     T2_Token,
-    T3_Token
+    T3_Token,
+    Unknown
 } TokenId;
 
 typedef struct {

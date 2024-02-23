@@ -8,6 +8,7 @@
 
 #include "token.h"
 #include "scanner.h"
+#include "testScanner.h"
 
 // Main function
 int main(int argc, char* argv[]) {
@@ -48,6 +49,7 @@ int main(int argc, char* argv[]) {
 
     token.tokenId = EOF_Token;
     scanner(token);
+    testScanner(file);
 
     printf("End of Main\n");
     return 0;
