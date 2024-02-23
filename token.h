@@ -18,7 +18,7 @@ typedef enum {
     T3_Token
 } TokenId;
 
-const char* tokenNames[] = {
+extern const char* tokenNames[] = {
         "EOF Token",
         "T1 Token",
         "T2 Token",
