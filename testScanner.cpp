@@ -21,7 +21,7 @@ void testScanner(char* inputFile) {
     int tokenCount = 0;
 
     for (int i=0; inputFile[i] != '\0'; i++) {
-        printf("Made it here\n");
+        //printf("Made it here!\n");
         char c = inputFile[i];
 
         // Handle New Line
