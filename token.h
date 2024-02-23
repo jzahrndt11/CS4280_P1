@@ -18,13 +18,6 @@ typedef enum {
     T3_Token
 } TokenId;
 
-extern const char* tokenNames[] = {
-        "EOF Token",
-        "T1 Token",
-        "T2 Token",
-        "T3 Token"
-};
-
 typedef struct {
     TokenId tokenId;
     char tokenInstance[MAX_TOKEN_SIZE];
