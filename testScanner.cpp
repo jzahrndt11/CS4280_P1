@@ -14,6 +14,7 @@
 Token tokenArray[100];
 
 void testScanner(char* inputFile) {
+    printf("Made it here");
     // Declare Variables
     int line = 1;
     bool comment = false;
