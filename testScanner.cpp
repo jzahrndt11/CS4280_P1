@@ -26,7 +26,7 @@ void testScanner(char* inputFile) {
 
     while ((c = fgetc(inputFilePtr)) != EOF) {
         // Handle New Line
-        if (c == '\n') {
+        if (c == 10) {
             line++;
         }
 
