@@ -61,6 +61,7 @@ void testScanner(char* inputFile) {
         tokenArray[tokenCount].tokenInstance[tokenIndex++] = c;
     }
 
+    printf("%s  :  %d", tokenArray[0].tokenInstance, tokenArray[0].lineNum);
 
 
 }
