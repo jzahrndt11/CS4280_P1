@@ -54,6 +54,7 @@ void testScanner(char* inputFile) {
                 printf("%s  :  %d\n", tokenArray[1].tokenInstance, tokenArray[1].lineNum);
 
                 // Increment line if new line is found
+                printf("%d ", c);
                 if (c == 10) {
                     line++;
                 }
