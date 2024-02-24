@@ -7,7 +7,7 @@
 #define TESTSCANNER_H
 
 
-void testScanner();
+void testScanner(char*);
 int getTableColumn(char);
 
 #endif

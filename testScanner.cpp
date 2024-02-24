@@ -4,6 +4,8 @@
  *      - testScanner.cpp
  */
 
+
+
 #include <stdio.h>
 #include <ctype.h>
 
@@ -19,13 +21,19 @@ const char* tokenNames[] = {
         "Unknown"
 };
 
-void testScanner() {
+
+
+void testScanner(char* file) {
     // Declare Variables
     int line = 1;
     bool comment = false;
     int tokenIndex = 0;
     int tokenCount = 0;
+    char nextChar;
 
+    Token tokenArray[100];
+
+    FILE* filePointer = fopen(file, "r");
 
     while ((nextChar = fgetc(filePointer)) != EOF) {
         // Skip Comments

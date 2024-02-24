@@ -37,7 +37,7 @@ int main(int argc, char* argv[]) {
     }
 
     // make sure file is readable, error otherwise
-    filePointer = fopen(file, "r");
+    FILE* filePointer = fopen(file, "r");
     if (filePointer == nullptr) {
         perror("Fatal: Error Opening File!\n");
         fclose(filePointer);
@@ -45,7 +45,7 @@ int main(int argc, char* argv[]) {
     }
 
     // Test Scanner function call
-    testScanner();
+    testScanner(file);
 
     // End of main
     printf("End of Main\n");
