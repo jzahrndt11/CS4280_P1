@@ -105,10 +105,11 @@ void getTableColumn() {
             case ' ':
                 colNum = 10;
                 return;
-            case '\0':
+            case EOF:
                 colNum = 11;
                 return;
             default:
+                colNum = 11;
                 return;
         }
     }
