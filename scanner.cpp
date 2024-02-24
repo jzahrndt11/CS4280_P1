@@ -28,6 +28,7 @@ Token scanner() {
     int state = 0;
     int nextState;
     tokenIndex = 0;
+    token.tokenInstance[0] = '\0';
 
     while (true) {
         getTableColumn();

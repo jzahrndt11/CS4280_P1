@@ -24,7 +24,6 @@ int colNum = 0;
 int tokenIndex = 0;
 int tokenCount = 0;
 Token token;
-//Token tokenArray[100];
 
 void testScanner() {
     int line = 1;
@@ -57,9 +56,14 @@ void testScanner() {
         // start scanner function
         scanner();
 
-
         // Print token info
         printf("%s\t%s\t%d\n", tokenNames[token.tokenId], token.tokenInstance, token.lineNum);
+
+        // Increment line if new line is found
+        if (nextChar == 10) {
+            line++;
+        }
+
         tokenCount++;
 
     } while (nextChar != EOF);
