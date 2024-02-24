@@ -40,6 +40,13 @@ Token scanner(int line) {
     while (true) {
         getTableColumn();
 
+        if (colNum == -1) {
+            while (nextChar != '#') {
+                nextChar = fgetc(filePointer);
+            }
+            continue;
+        }
+
         if (state < 12 && colNum < 12) {
             nextState = tableArr[state][colNum];
             //printf("nextState = %d\n", nextState);
@@ -108,65 +115,3 @@ Token scanner(int line) {
         }
     }
 }
-
-
-
-//int scanner(const char token[MAX_TOKEN_SIZE]) {
-//    int state = 0;
-//    int nextState;
-//    int tokenIndex = 0;
-//
-//    while (true) {
-//        char currentChar = token[tokenIndex];
-//        int col = getTableColumn(currentChar);
-//
-//        if (state < 12 && col < 12) {
-//            nextState = tableArr[state][col];
-//            //printf("nextState = %d\n", nextState);
-//        } else {
-//            printf("Error index greater than 11");
-//        }
-//
-//        if (nextState < 0) {
-//            switch (nextState) {
-//                case -1:
-//                    printf("Error: No Tokens starts with digit\n");
-//                    return 4; // Unknown
-//                case -2:
-//                    printf("Error: No Tokens starts with \"\n");
-//                    return 4; // Unknown
-//                case -3:
-//                    printf("Error: No Tokens starts with $\n");
-//                    return 4; // Unknown
-//                case -4:
-//                    printf("Error: No Tokens starts with ;\n");
-//                    return 4; // Unknown
-//                case -5:
-//                    printf("Error: Must be a digit\n");
-//                    return 4; // Unknown
-//                default:
-//                    printf("Error!");
-//                    return 4; // Unknown
-//            }
-//        }
-//
-//        if (nextState > 1000) {
-//            switch (nextState) {
-//                case 1001:
-//                    return 0; // EOF Token
-//                case 1002:
-//                    return 1; // T1 Token
-//                case 1003:
-//                    return 2;  // T2 Token
-//                case 1004:
-//                    return 3; // T3 Token
-//                default:
-//                    perror("Error!");
-//                    return 4; // Unknown
-//            }
-//        } else {
-//            state = nextState;
-//            tokenIndex++;
-//        }
-//    }
-//}
