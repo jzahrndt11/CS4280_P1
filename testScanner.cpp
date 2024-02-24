@@ -86,8 +86,8 @@ void testScanner(char* file) {
 
             // Start of token
             tokenArray[tokenCount].tokenInstance[tokenIndex++] = nextChar;
-    } while (nextChar != EOF);
 
+    } while (nextChar != EOF);
 }
 
 int getTableColumn(char currentChar) {
