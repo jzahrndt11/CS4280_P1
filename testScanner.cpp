@@ -18,7 +18,7 @@ const char* tokenNames[] = {
         "T3 Token",
         "Unknown"
 };
-
+//
 void testScanner(char* file) {
     // Declare Variables
     int line = 1;
