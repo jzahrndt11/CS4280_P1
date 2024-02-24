@@ -6,6 +6,7 @@
 
 #include <stdio.h>
 #include <ctype.h>
+#include "string.h"
 
 #include "testScanner.h"
 #include "scanner.h"
@@ -27,6 +28,7 @@ void testScanner() {
     Token tokenInfo;
     int line = 1;
     bool comment = false;
+    memset(tokenInfo.tokenInstance, '\0', MAX_TOKEN_SIZE);
 
     nextChar = fgetc(filePointer);
 

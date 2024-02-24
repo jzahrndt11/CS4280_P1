@@ -30,9 +30,10 @@ Token scanner(int line) {
     int state = 0;
     int nextState;
     tokenIndex = 0;
-    token.lineNum = line;
 
+    token.lineNum = line;
     memset(token.tokenInstance, '\0', MAX_TOKEN_SIZE);
+    token.tokenId = Unknown;
 
 
     while (true) {
