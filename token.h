@@ -10,6 +10,10 @@
 
 const int MAX_TOKEN_SIZE = 100;
 
+char nextChar;
+int colNum;
+FILE* filePointer, *fopen();
+
 // Enumeration - mainly used to assign names to integral constants
 typedef enum {
     EOF_Token,
@@ -25,5 +29,6 @@ typedef struct {
     int lineNum;
 } Token;
 
+Token tokenArray[100];
 
 #endif

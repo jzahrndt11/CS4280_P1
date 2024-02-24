@@ -19,35 +19,31 @@ const char* tokenNames[] = {
         "Unknown"
 };
 
-void testScanner(char* inputFile) {
+void testScanner() {
     // Declare Variables
     int line = 1;
     bool comment = false;
     int tokenIndex = 0;
     int tokenCount = 0;
-    int c;
-    Token tokenArray[100];
-
-    FILE* inputFilePtr = fopen(inputFile, "r");
 
 
-    while ((c = fgetc(inputFilePtr)) != EOF) {
+    while ((nextChar = fgetc(filePointer)) != EOF) {
         // Skip Comments
         if (comment) {
-            if (c == '#') {
+            if (nextChar == '#') {
                 comment = false;
             }
             continue;
         }
 
         // Check for start of comment
-        if (c == '#') {
+        if (nextChar == '#') {
             comment = true;
             continue;
         }
 
         // Skip Spaces and Prints Token
-        if (isspace(c)) {
+        if (isspace(nextChar)) {
             if (tokenIndex > 0) { // Found a token
                 // Set token instance string and line #
                 tokenArray[tokenCount].tokenInstance[tokenIndex] = '\0'; // Null-terminate the token string
@@ -60,7 +56,7 @@ void testScanner(char* inputFile) {
                 printf("%s\t%s\t%d\n", tokenNames[tokenId], tokenArray[tokenCount].tokenInstance, tokenArray[tokenCount].lineNum);
 
                 // Increment line if new line is found
-                if (c == 10) {
+                if (nextChar == 10) {
                     line++;
                 }
 
@@ -71,9 +67,43 @@ void testScanner(char* inputFile) {
         }
 
         // Start of token
-        tokenArray[tokenCount].tokenInstance[tokenIndex++] = c;
+        tokenArray[tokenCount].tokenInstance[tokenIndex++] = nextChar;
     }
-
-
-
 }
+
+int getTableColumn(char currentChar) {
+        switch (currentChar) {
+            case 'A' ... 'Z':
+                return 0;
+            case 'a' ... 'z':
+                return 0;
+            case 0 ... 9:
+                return 1;
+            case '%':
+                return 2;
+            case '.':
+                return 3;
+            case '!':
+                return 3;
+            case '*':
+                return 4;
+            case '\"':
+                return 5;
+            case '?':
+                return 6;
+            case '$':
+                return 7;
+            case ',':
+                return 8;
+            case ';':
+                return 9;
+            case ' ':
+                return 10;
+            default:
+                return 11;
+        }
+}
+
+
+
+

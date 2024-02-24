@@ -7,6 +7,7 @@
 #include <stdlib.h>
 
 #include "scanner.h"
+#include "testScanner.h"
 
 
 int tableArr[12][12] = {
@@ -29,9 +30,15 @@ int scanner(const char token[MAX_TOKEN_SIZE]) {
     int nextState;
     int tokenIndex = 0;
 
-    while (1) {
-        unsigned char currentChar = token[tokenIndex];
-        nextState = tableArr[state][currentChar];
+    while (true) {
+        char currentChar = token[tokenIndex];
+        int col = getTableColumn(currentChar);
+
+        if (state < 12 && col < 12) {
+            nextState = tableArr[state][col];
+        } else {
+            perror("Error index greater than 11");
+        }
 
         if (nextState < 0) {
             switch (nextState) {
@@ -74,7 +81,5 @@ int scanner(const char token[MAX_TOKEN_SIZE]) {
             state = nextState;
             tokenIndex++;
         }
-
     }
-
 }
