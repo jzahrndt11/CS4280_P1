@@ -81,7 +81,7 @@ void testScanner(char* file) {
                 int tokenId = scanner(tokenArray[tokenCount].tokenInstance);
 
                 // Print Result
-                printf("%s\t%d\n", tokenNames[tokenId], tokenArray[tokenCount].lineNum);
+                printf("%s\t\t%d\n", tokenNames[tokenId], tokenArray[tokenCount].lineNum);
             }
 
             // Start of token
