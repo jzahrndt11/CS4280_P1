@@ -105,6 +105,12 @@ void getTableColumn() {
             case ' ':
                 colNum = 10;
                 return;
+            case '\n':
+                colNum = 10;
+                return;
+            case '\t':
+                colNum = 10;
+                return;
             case EOF:
                 colNum = 11;
                 return;
