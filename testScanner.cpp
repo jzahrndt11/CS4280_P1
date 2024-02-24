@@ -50,6 +50,11 @@ void testScanner() {
             continue;
         }
 
+        // Increment line if new line is found
+        if (nextChar == 10) {
+            line++;
+        }
+
         // Set line # for token about to be scanned
         token.lineNum = line;
 
@@ -59,10 +64,6 @@ void testScanner() {
         // Print token info
         printf("%s\t%s\t%d\n", tokenNames[token.tokenId], token.tokenInstance, token.lineNum);
 
-        // Increment line if new line is found
-        if (nextChar == 10) {
-            line++;
-        }
 
         tokenCount++;
 
