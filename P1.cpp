@@ -6,8 +6,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "token.h"
 #include "testScanner.h"
+
+FILE* filePointer = nullptr;
 
 // Main function
 int main(int argc, char* argv[]) {
@@ -37,7 +38,7 @@ int main(int argc, char* argv[]) {
     }
 
     // make sure file is readable, error otherwise
-    FILE* filePointer = fopen(file, "r");
+    filePointer = fopen(file, "r");
     if (filePointer == nullptr) {
         perror("Fatal: Error Opening File!\n");
         fclose(filePointer);
@@ -45,7 +46,8 @@ int main(int argc, char* argv[]) {
     }
 
     // Test Scanner function call
-    testScanner(file);
+    //testScanner(file);
+    testScanner();
 
     // End of main
     printf("End of Main\n");

@@ -6,8 +6,23 @@
 #ifndef TESTSCANNER_H
 #define TESTSCANNER_H
 
+#include "token.h"
 
-void testScanner(char*);
+extern char nextChar;
+extern int colNum;
+extern int tokenIndex;
+extern int tokenCount;
+
+extern FILE* filePointer;
+extern Token tokenArray[100];
+
+
+//void testScanner(char*);
+void testScanner();
+void getChar();
+void avoidComments();
+void getNonBlank();
+void addChar();
 int getTableColumn(char);
 
 #endif
