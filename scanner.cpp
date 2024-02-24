@@ -40,12 +40,12 @@ Token scanner(int line) {
     while (true) {
         getTableColumn();
 
-        if (colNum == -1) {
-            while (nextChar != '#') {
-                nextChar = fgetc(filePointer);
-            }
-            continue;
-        }
+//        if (colNum == -1) {
+//            while (nextChar != '#') {
+//                nextChar = fgetc(filePointer);
+//            }
+//            continue;
+//        }
 
         if (state < 12 && colNum < 12) {
             nextState = tableArr[state][colNum];
