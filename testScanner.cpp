@@ -22,18 +22,23 @@ const char* tokenNames[] = {
 char nextChar = 0;
 int colNum = 0;
 int tokenIndex = 0;
-int tokenCount = 0;
-Token token;
 
 void testScanner() {
+    Token tokenInfo;
     int line = 1;
     bool comment = false;
 
-    do {
-        nextChar = fgetc(filePointer);
+    nextChar = fgetc(filePointer);
 
-        if (isspace(nextChar)) {
-            continue;
+    do {
+        // Skip Spaces
+        while (isspace(nextChar)) {
+            // Increment line if new line is found
+            if (nextChar == 10) {
+                line++;
+            }
+
+            nextChar = fgetc(filePointer);
         }
 
         // Skip Comments
@@ -41,7 +46,7 @@ void testScanner() {
             if (nextChar == '#') {
                 comment = false;
             }
-            continue;
+            nextChar = fgetc(filePointer);
         }
 
         // Check for start of comment
@@ -50,22 +55,11 @@ void testScanner() {
             continue;
         }
 
-        // Increment line if new line is found
-        if (nextChar == 10) {
-            line++;
-        }
-
-        // Set line # for token about to be scanned
-        token.lineNum = line;
-
         // start scanner function
-        scanner();
+        tokenInfo = scanner(line);
 
         // Print token info
-        printf("%s\t%s\t%d\n", tokenNames[token.tokenId], token.tokenInstance, token.lineNum);
-
-
-        tokenCount++;
+        printf("%s\t%s\t%d\n", tokenNames[tokenInfo.tokenId], tokenInfo.tokenInstance, tokenInfo.lineNum);
 
     } while (nextChar != EOF);
 }

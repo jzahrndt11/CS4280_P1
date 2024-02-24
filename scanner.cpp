@@ -8,7 +8,7 @@
 
 #include "scanner.h"
 #include "testScanner.h"
-//
+
 int tableArr[12][12] = {
         { 1, -1, 3, 5, 6, -2, 8, -3, 10, -4, 0, 1001 },
         { -5, 2, -5, -5, -5, -5, -5, -5, -5, -5, -5, -5 },
@@ -25,12 +25,15 @@ int tableArr[12][12] = {
 };
 
 // Scanner function return Token with string and tokenId
-Token scanner() {
+Token scanner(int line) {
+    Token token;
     int state = 0;
     int nextState;
     tokenIndex = 0;
-    //token.tokenInstance[0] = '\0';
+    token.lineNum = line;
+
     memset(token.tokenInstance, '\0', MAX_TOKEN_SIZE);
+
 
     while (true) {
         getTableColumn();
