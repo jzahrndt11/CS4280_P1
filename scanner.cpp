@@ -36,6 +36,7 @@ int scanner(const char token[MAX_TOKEN_SIZE]) {
 
         if (state < 12 && col < 12) {
             nextState = tableArr[state][col];
+            printf("nextState = %d\n", nextState);
         } else {
             perror("Error index greater than 11");
         }
