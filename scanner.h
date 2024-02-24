@@ -8,6 +8,6 @@
 
 #include "token.h"
 
-void scanner(Token);
+int scanner(const char[MAX_TOKEN_SIZE]);
 
 #endif

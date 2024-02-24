@@ -7,7 +7,6 @@
 #include <stdlib.h>
 
 #include "token.h"
-#include "scanner.h"
 #include "testScanner.h"
 
 // Main function
@@ -15,8 +14,6 @@ int main(int argc, char* argv[]) {
     // Declare Variables
         char* file;
         int character;
-
-        Token token;
 
     // check the number of commands
     if (argc > 2) {
@@ -47,10 +44,10 @@ int main(int argc, char* argv[]) {
         return EXIT_FAILURE;
     }
 
-    token.tokenId = EOF_Token;
-    scanner(token);
+    // Test Scanner function call
     testScanner(file);
 
+    // End of main
     printf("End of Main\n");
     return 0;
 }

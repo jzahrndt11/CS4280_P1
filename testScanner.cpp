@@ -5,13 +5,19 @@
  */
 
 #include <stdio.h>
-#include <stdlib.h>
 #include <ctype.h>
 
 #include "token.h"
 #include "testScanner.h"
+#include "scanner.h"
 
-Token tokenArray[100];
+const char* tokenNames[] = {
+        "EOF Token",
+        "T1 Token",
+        "T2 Token",
+        "T3 Token",
+        "Unknown"
+};
 
 void testScanner(char* inputFile) {
     // Declare Variables
@@ -20,6 +26,7 @@ void testScanner(char* inputFile) {
     int tokenIndex = 0;
     int tokenCount = 0;
     int c;
+    Token tokenArray[100];
 
     FILE* inputFilePtr = fopen(inputFile, "r");
 
@@ -47,10 +54,10 @@ void testScanner(char* inputFile) {
                 tokenArray[tokenCount].lineNum = line;
 
                 // Find TokenId
-                //scanner(token)
+                int tokenId = scanner(tokenArray[tokenCount].tokenInstance);
 
                 // Print Result
-                printf("%s  :  %d\n", tokenArray[tokenCount].tokenInstance, tokenArray[tokenCount].lineNum);
+                printf("%s\t%s\t%d\n", tokenNames[tokenId], tokenArray[tokenCount].tokenInstance, tokenArray[tokenCount].lineNum);
 
                 // Increment line if new line is found
                 if (c == 10) {
