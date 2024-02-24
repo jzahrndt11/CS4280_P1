@@ -33,6 +33,25 @@ void testScanner() {
     nextChar = fgetc(filePointer);
 
     do {
+        // Skip Comments
+        while (comment) {
+            nextChar = fgetc(filePointer);
+            if (nextChar == 10) {
+                line++;
+            }
+            if (nextChar == 35) {
+                comment = false;
+                nextChar = fgetc(filePointer);
+            }
+        }
+
+        // Check for start of comment
+        if (nextChar == 35) {
+            comment = true;
+            //nextChar = fgetc(filePointer);
+            continue;
+        }
+
         // Skip Spaces
         while (isspace(nextChar)) {
             // Increment line if new line is found
@@ -40,23 +59,6 @@ void testScanner() {
                 line++;
             }
             nextChar = fgetc(filePointer);
-        }
-
-        // Skip Comments
-        while (comment) {
-            if (nextChar == 35) {
-                comment = false;
-                nextChar = fgetc(filePointer);
-                continue;
-            }
-            nextChar = fgetc(filePointer);
-        }
-
-        // Check for start of comment
-        if (nextChar == 35) {
-            comment = true;
-            nextChar = fgetc(filePointer);
-            continue;
         }
 
         // start scanner function
