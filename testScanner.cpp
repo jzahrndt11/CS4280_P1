@@ -42,18 +42,18 @@ void testScanner() {
             nextChar = fgetc(filePointer);
         }
 
+        // Check for start of comment
+        if (nextChar == 35) {
+            comment = true;
+            nextChar = fgetc(filePointer);
+        }
+
         // Skip Comments
         while (comment) {
             if (nextChar == 35) {
                 comment = false;
             }
             nextChar = fgetc(filePointer);
-        }
-
-        // Check for start of comment
-        if (nextChar == 35) {
-            comment = true;
-            continue;
         }
 
         // start scanner function
