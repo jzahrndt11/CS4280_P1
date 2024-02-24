@@ -8,7 +8,6 @@
 #include "scanner.h"
 #include "testScanner.h"
 
-
 int tableArr[12][12] = {
         { 1, -1, 3, 5, 6, -2, 8, -3, 10, -4, 0, 1001 },
         { -5, 2, -5, -5, -5, -5, -5, -5, -5, -5, -5, -5 },
@@ -23,6 +22,80 @@ int tableArr[12][12] = {
         { 1004, 1004, 1004, 1004, 1004, 1004, 1004, 1004, 1004, 11, 1004, 1004 },
         { 1004, 1004, 1004, 1004, 1004, 1004, 1004, 1004, 1004, 1004, 1004, 1004 }
 };
+
+// Scanner function return Token with string and tokenId
+Token scanner() {
+    int state = 0;
+    int nextState;
+    tokenIndex = 0;
+
+    while (true) {
+        getTableColumn();
+
+        if (state < 12 && colNum < 12) {
+            nextState = tableArr[state][colNum];
+            //printf("nextState = %d\n", nextState);
+        } else {
+            printf("Error index greater than 11");
+        }
+
+        if (nextState < 0) {
+            switch (nextState) {
+                case -1:
+                    printf("Error (scanner): No Tokens starts with digit\n");
+                    token.tokenId = Unknown;
+                    return token;
+                case -2:
+                    printf("Error (scanner): No Tokens starts with \"\n");
+                    token.tokenId = Unknown;
+                    return token;
+                case -3:
+                    printf("Error (scanner): No Tokens starts with $\n");
+                    token.tokenId = Unknown;
+                    return token;
+                case -4:
+                    printf("Error (scanner): No Tokens starts with ;\n");
+                    token.tokenId = Unknown;
+                    return token;
+                case -5:
+                    printf("Error (scanner): Must be a digit\n");
+                    token.tokenId = Unknown;
+                    return token;
+                default:
+                    printf("Error! (scanner)");
+                    token.tokenId = Unknown;
+                    return token;
+            }
+        }
+
+        if (nextState > 1000) {
+            switch (nextState) {
+                case 1001:
+                    token.tokenId = EOF_Token;
+                    return token;
+                case 1002:
+                    token.tokenId = T1_Token;
+                    return token;
+                case 1003:
+                    token.tokenId = T2_Token;
+                    return token;
+                case 1004:
+                    token.tokenId = T3_Token;
+                    return token;
+                default:
+                    printf("Error! (scanner)");
+                    token.tokenId = Unknown;
+                    return token;
+            }
+        } else {
+            state = nextState;
+            token.tokenInstance[tokenIndex++] = nextChar;
+            nextChar = fgetc(filePointer);
+        }
+    }
+}
+
+
 
 //int scanner(const char token[MAX_TOKEN_SIZE]) {
 //    int state = 0;
@@ -83,74 +156,3 @@ int tableArr[12][12] = {
 //        }
 //    }
 //}
-
-void scanner() {
-    int state = 0;
-    int nextState;
-
-    while (true) {
-        tokenIndex = 0;
-        getTableColumn();
-
-        if (state < 12 && colNum < 12) {
-            nextState = tableArr[state][colNum];
-            //printf("nextState = %d\n", nextState);
-        } else {
-            printf("Error index greater than 11");
-        }
-
-        if (nextState < 0) {
-            switch (nextState) {
-                case -1:
-                    printf("Error (scanner): No Tokens starts with digit\n");
-                    tokenArray[tokenCount].tokenId = Unknown;
-                    return;
-                case -2:
-                    printf("Error (scanner): No Tokens starts with \"\n");
-                    tokenArray[tokenCount].tokenId = Unknown;
-                    return;
-                case -3:
-                    printf("Error (scanner): No Tokens starts with $\n");
-                    tokenArray[tokenCount].tokenId = Unknown;
-                    return;
-                case -4:
-                    printf("Error (scanner): No Tokens starts with ;\n");
-                    tokenArray[tokenCount].tokenId = Unknown;
-                    return;
-                case -5:
-                    printf("Error (scanner): Must be a digit\n");
-                    tokenArray[tokenCount].tokenId = Unknown;
-                    return;
-                default:
-                    printf("Error! (scanner)");
-                    tokenArray[tokenCount].tokenId = Unknown;
-                    return;
-            }
-        }
-
-        if (nextState > 1000) {
-            switch (nextState) {
-                case 1001:
-                    tokenArray[tokenCount].tokenId = EOF_Token;
-                    return;
-                case 1002:
-                    tokenArray[tokenCount].tokenId = T1_Token;
-                    return;
-                case 1003:
-                    tokenArray[tokenCount].tokenId = T2_Token;
-                    return;
-                case 1004:
-                    tokenArray[tokenCount].tokenId = T3_Token;
-                    return;
-                default:
-                    printf("Error! (scanner)");
-                    tokenArray[tokenCount].tokenId = Unknown;
-                    return;
-            }
-        } else {
-            state = nextState;
-            tokenArray[tokenCount].tokenInstance[tokenIndex++] = nextChar;
-            nextChar = fgetc(filePointer);
-        }
-    }
-}

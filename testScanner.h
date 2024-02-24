@@ -14,7 +14,8 @@ extern int tokenIndex;
 extern int tokenCount;
 
 extern FILE* filePointer;
-extern Token tokenArray[100];
+extern Token token;
+//extern Token tokenArray[100];
 
 //void testScanner(char*);
 void testScanner();

@@ -23,8 +23,8 @@ char nextChar = 0;
 int colNum = 0;
 int tokenIndex = 0;
 int tokenCount = 0;
-
-Token tokenArray[100];
+Token token;
+//Token tokenArray[100];
 
 void testScanner() {
     int line = 1;
@@ -52,16 +52,15 @@ void testScanner() {
         }
 
         // Set line # for token about to be scanned
-        tokenArray[tokenCount].lineNum = line;
+        token.lineNum = line;
 
         // start scanner function
         scanner();
 
 
         // Print token info
-        printf("%s\t%s\t%d\n", tokenNames[tokenArray[tokenCount].tokenId], tokenArray[tokenCount].tokenInstance, tokenArray[tokenCount].lineNum);
+        printf("%s\t%s\t%d\n", tokenNames[token.tokenId], token.tokenInstance, token.lineNum);
         tokenCount++;
-
 
     } while (nextChar != EOF);
 }
