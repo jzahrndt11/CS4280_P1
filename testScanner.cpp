@@ -4,8 +4,6 @@
  *      - testScanner.cpp
  */
 
-
-
 #include <stdio.h>
 #include <ctype.h>
 
@@ -21,8 +19,6 @@ const char* tokenNames[] = {
         "Unknown"
 };
 
-
-
 void testScanner(char* file) {
     // Declare Variables
     int line = 1;
@@ -35,48 +31,63 @@ void testScanner(char* file) {
 
     FILE* filePointer = fopen(file, "r");
 
-    while ((nextChar = fgetc(filePointer)) != EOF) {
-        // Skip Comments
-        if (comment) {
-            if (nextChar == '#') {
-                comment = false;
-            }
-            continue;
-        }
+    do {
+            nextChar = fgetc(filePointer);
 
-        // Check for start of comment
-        if (nextChar == '#') {
-            comment = true;
-            continue;
-        }
-
-        // Skip Spaces and Prints Token
-        if (isspace(nextChar)) {
-            if (tokenIndex > 0) { // Found a token
-                // Set token instance string and line #
-                tokenArray[tokenCount].tokenInstance[tokenIndex] = '\0'; // Null-terminate the token string
-                tokenArray[tokenCount].lineNum = line;
-
-                // Find TokenId
-                int tokenId = scanner(tokenArray[tokenCount].tokenInstance);
-
-                // Print Result
-                printf("%s\t%s\t%d\n", tokenNames[tokenId], tokenArray[tokenCount].tokenInstance, tokenArray[tokenCount].lineNum);
-
-                // Increment line if new line is found
-                if (nextChar == 10) {
-                    line++;
+            // Skip Comments
+            if (comment) {
+                if (nextChar == '#') {
+                    comment = false;
                 }
-
-                tokenIndex = 0;
-                tokenCount++;
+                continue;
             }
-            continue;
-        }
 
-        // Start of token
-        tokenArray[tokenCount].tokenInstance[tokenIndex++] = nextChar;
-    }
+            // Check for start of comment
+            if (nextChar == '#') {
+                comment = true;
+                continue;
+            }
+
+            // Skip Spaces and Prints Token
+            if (isspace(nextChar)) {
+                //if (tokenIndex > 0) { // Found a token
+                    // Set token instance string and line #
+                    tokenArray[tokenCount].tokenInstance[tokenIndex] = '\0'; // Null-terminate the token string
+                    tokenArray[tokenCount].lineNum = line;
+
+                    // Find TokenId
+                    int tokenId = scanner(tokenArray[tokenCount].tokenInstance);
+
+                    // Print Result
+                    printf("%s\t%s\t%d\n", tokenNames[tokenId], tokenArray[tokenCount].tokenInstance, tokenArray[tokenCount].lineNum);
+
+                    // Increment line if new line is found
+                    if (nextChar == 10) {
+                        line++;
+                    }
+
+                    tokenIndex = 0;
+                    tokenCount++;
+                //}
+                continue;
+            }
+
+//            // check for EOF
+//            if (nextChar == EOF) {
+//                tokenArray[tokenCount].lineNum = line;
+//                tokenArray[tokenCount].tokenInstance[tokenIndex] = '\0';
+//
+//                // Find TokenId
+//                int tokenId = scanner(tokenArray[tokenCount].tokenInstance);
+//
+//                // Print Result
+//                printf("%s\t%d\n", tokenNames[tokenId], tokenArray[tokenCount].lineNum);
+//            }
+
+            // Start of token
+            tokenArray[tokenCount].tokenInstance[tokenIndex++] = nextChar;
+    } while (nextChar != EOF);
+
 }
 
 int getTableColumn(char currentChar) {
@@ -104,6 +115,8 @@ int getTableColumn(char currentChar) {
                 return 8;
             case ';':
                 return 9;
+            case '\0':
+                return 11;
             default:
                 return 11;
         }
