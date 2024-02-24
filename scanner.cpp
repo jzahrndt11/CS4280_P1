@@ -4,6 +4,7 @@
  *      - scanner.cpp
  */
 #include <stdio.h>
+#include <string.h>
 
 #include "scanner.h"
 #include "testScanner.h"
@@ -28,7 +29,8 @@ Token scanner() {
     int state = 0;
     int nextState;
     tokenIndex = 0;
-    token.tokenInstance[0] = '\0';
+    //token.tokenInstance[0] = '\0';
+    memset(token.tokenInstance, '\0', MAX_TOKEN_SIZE);
 
     while (true) {
         getTableColumn();
