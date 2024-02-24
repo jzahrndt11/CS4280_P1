@@ -4,6 +4,7 @@
  *      - scanner.cpp
  */
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
 #include "scanner.h"
@@ -51,28 +52,33 @@ Token scanner(int line) {
             switch (nextState) {
                 case -1:
                     printf("Error (scanner): No Tokens starts with digit\n");
-                    token.tokenId = Unknown;
-                    return token;
+                    //token.tokenId = Unknown;
+                    exit(EXIT_FAILURE);
                 case -2:
                     printf("Error (scanner): No Tokens starts with \"\n");
-                    token.tokenId = Unknown;
-                    return token;
+                    //token.tokenId = Unknown;
+                    //return token;
+                    exit(EXIT_FAILURE);
                 case -3:
                     printf("Error (scanner): No Tokens starts with $\n");
-                    token.tokenId = Unknown;
-                    return token;
+                    //token.tokenId = Unknown;
+                    //return token;
+                    exit(EXIT_FAILURE);
                 case -4:
                     printf("Error (scanner): No Tokens starts with ;\n");
-                    token.tokenId = Unknown;
-                    return token;
+                    //token.tokenId = Unknown;
+                    //return token;
+                    exit(EXIT_FAILURE);
                 case -5:
-                    printf("Error (scanner): Must be a digit\n");
-                    token.tokenId = Unknown;
-                    return token;
+                    printf("Error (scanner): Token must be followed by a digit\n");
+                    //token.tokenId = Unknown;
+                    //return token;
+                    exit(EXIT_FAILURE);
                 default:
                     printf("Error! (scanner)");
-                    token.tokenId = Unknown;
-                    return token;
+                    //token.tokenId = Unknown;
+                    //return token;
+                    exit(EXIT_FAILURE);
             }
         }
 
