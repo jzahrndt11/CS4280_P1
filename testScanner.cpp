@@ -80,13 +80,12 @@ void testScanner(char* file) {
 }
 
 int getTableColumn(char currentChar) {
+    if (isalpha(currentChar)) {
+        return 0;
+    } else if (isdigit(currentChar)){
+        return 1;
+    } else {
         switch (currentChar) {
-            case 'A' ... 'Z':
-                return 0;
-            case 'a' ... 'z':
-                return 0;
-            case 0 ... 9:
-                return 1;
             case '%':
                 return 2;
             case '.':
@@ -105,11 +104,10 @@ int getTableColumn(char currentChar) {
                 return 8;
             case ';':
                 return 9;
-            case ' ':
-                return 10;
             default:
                 return 11;
         }
+    }
 }
 
 
