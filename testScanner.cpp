@@ -43,21 +43,24 @@ void testScanner() {
         }
 
         // Skip Comments
-        while (comment) {
-            if (nextChar == 35) {
-                comment = false;
-                nextChar = fgetc(filePointer);
-                continue;
-            }
-            nextChar = fgetc(filePointer);
-        }
-
-        // Check for start of comment
         if (nextChar == 35) {
-            comment = true;
             nextChar = fgetc(filePointer);
+
+            while (nextChar != 35) {
+                nextChar = fgetc(filePointer);
+            }
+
+            if (nextChar == 10) {
+                line++;
+            }
             continue;
         }
+
+//        // Check for start of comment
+//        if (nextChar == 35) {
+//            comment = true;
+//            continue;
+//        }
 
         // start scanner function
         tokenInfo = scanner(line);
