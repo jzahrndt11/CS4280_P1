@@ -26,6 +26,122 @@ int tokenCount = 0;
 
 Token tokenArray[100];
 
+void testScanner() {
+    int line = 1;
+    bool comment = false;
+
+    do {
+        nextChar = fgetc(filePointer);
+
+        if (isspace(nextChar)) {
+            continue;
+        }
+
+        // Skip Comments
+        if (comment) {
+            if (nextChar == '#') {
+                comment = false;
+            }
+            continue;
+        }
+
+        // Check for start of comment
+        if (nextChar == '#') {
+            comment = true;
+            continue;
+        }
+
+        // Set line # for token about to be scanned
+        tokenArray[tokenCount].lineNum = line;
+
+        // start scanner function
+        scanner();
+
+
+        // Print token info
+        printf("%s\t%s\t%d\n", tokenNames[tokenArray[tokenCount].tokenId], tokenArray[tokenCount].tokenInstance, tokenArray[tokenCount].lineNum);
+        tokenCount++;
+
+
+    } while (nextChar != EOF);
+}
+
+void getTableColumn() {
+    if (isalpha(nextChar)) {
+        colNum = 0;
+        return;
+    } else if (isdigit(nextChar)){
+        colNum = 1;
+        return;
+    } else {
+        switch (nextChar) {
+            case '%':
+                colNum = 2;
+                return;
+            case '.':
+                colNum = 3;
+                return;
+            case '!':
+                colNum = 3;
+                return;
+            case '*':
+                colNum = 4;
+                return;
+            case '\"':
+                colNum = 5;
+                return;
+            case '?':
+                colNum = 6;
+                return;
+            case '$':
+                colNum = 7;
+                return;
+            case ',':
+                colNum = 8;
+                return;
+            case ';':
+                colNum = 9;
+                return;
+            case ' ':
+                colNum = 10;
+                return;
+            case '\0':
+                colNum = 11;
+                return;
+            default:
+                return;
+        }
+    }
+}
+
+//void getChar() {
+//    if ((nextChar = getc(filePointer)) != EOF) {
+//        colNum = getTableColumn(nextChar);
+//    } else {
+//        colNum = 11;
+//    }
+//}
+
+//void avoidComments() {
+//    while (nextChar != '#') {
+//        getChar();
+//    }
+//}
+
+//void getNonBlank() {
+//    while (isspace(nextChar))
+//        nextChar = fgetc(filePointer);
+//}
+
+//void addChar() {
+//    if (tokenIndex <= 98) {
+//        tokenArray[tokenCount].tokenInstance[tokenIndex++] = nextChar;
+//        tokenArray[tokenCount].tokenInstance[tokenIndex] = 0;
+//    } else {
+//        printf("Error (testScanner: addChar) - String is too long!");
+//    }
+//}
+
 //void testScanner(char* file) {
 //    // Declare Variables
 //    int line = 1;
@@ -96,89 +212,3 @@ Token tokenArray[100];
 //
 //    } while (nextChar != EOF);
 //}
-
-void testScanner() {
-    int line = 1;
-    getNonBlank();
-    printf("%c\n", nextChar);
-    do {
-        if (nextChar == '#') {
-            avoidComments();
-        }
-        if (nextChar == 10) {
-            line++;
-        }
-        scanner();
-        tokenArray[tokenCount].lineNum = line;
-
-        // Print token info
-        printf("%s\t%s\t%d\n", tokenNames[tokenArray[tokenCount].tokenId], tokenArray[tokenCount].tokenInstance, tokenArray[tokenCount].lineNum);
-        tokenCount++;
-    } while (nextChar != EOF);
-}
-
-
-void getChar() {
-    if ((nextChar = getc(filePointer)) != EOF) {
-        colNum = getTableColumn(nextChar);
-    } else {
-        colNum = 11;
-    }
-}
-
-void avoidComments() {
-    while (nextChar != '#') {
-        getChar();
-    }
-}
-
-void getNonBlank() {
-    while (isspace(nextChar))
-        getChar();
-}
-
-void addChar() {
-    if (tokenIndex <= 98) {
-        tokenArray[tokenCount].tokenInstance[tokenIndex++] = nextChar;
-        tokenArray[tokenCount].tokenInstance[tokenIndex] = 0;
-    } else {
-        printf("Error (testScanner: addChar) - String is too long!");
-    }
-}
-
-int getTableColumn(char currentChar) {
-    if (isalpha(currentChar)) {
-        return 0;
-    } else if (isdigit(currentChar)){
-        return 1;
-    } else {
-        switch (currentChar) {
-            case '%':
-                return 2;
-            case '.':
-                return 3;
-            case '!':
-                return 3;
-            case '*':
-                return 4;
-            case '\"':
-                return 5;
-            case '?':
-                return 6;
-            case '$':
-                return 7;
-            case ',':
-                return 8;
-            case ';':
-                return 9;
-            case ' ':
-                return 10;
-            default:
-                return 11;
-        }
-    }
-}
-
-
-
-

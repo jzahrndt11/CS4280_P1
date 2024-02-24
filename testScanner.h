@@ -16,13 +16,12 @@ extern int tokenCount;
 extern FILE* filePointer;
 extern Token tokenArray[100];
 
-
 //void testScanner(char*);
 void testScanner();
-void getChar();
-void avoidComments();
-void getNonBlank();
-void addChar();
-int getTableColumn(char);
+void getTableColumn();
+//void getChar();
+//void avoidComments();
+//void getNonBlank();
+//void addChar();
 
 #endif

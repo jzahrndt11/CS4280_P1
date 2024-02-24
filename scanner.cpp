@@ -90,6 +90,7 @@ void scanner() {
 
     while (true) {
         tokenIndex = 0;
+        getTableColumn();
 
         if (state < 12 && colNum < 12) {
             nextState = tableArr[state][colNum];
@@ -149,7 +150,7 @@ void scanner() {
         } else {
             state = nextState;
             tokenArray[tokenCount].tokenInstance[tokenIndex++] = nextChar;
-            getChar();
+            nextChar = fgetc(filePointer);
         }
     }
 }
