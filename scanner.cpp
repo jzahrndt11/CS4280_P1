@@ -36,30 +36,30 @@ int scanner(const char token[MAX_TOKEN_SIZE]) {
 
         if (state < 12 && col < 12) {
             nextState = tableArr[state][col];
-            printf("nextState = %d\n", nextState);
+            //printf("nextState = %d\n", nextState);
         } else {
-            perror("Error index greater than 11");
+            printf("Error index greater than 11");
         }
 
         if (nextState < 0) {
             switch (nextState) {
                 case -1:
-                    perror("Error: No Tokens starts with digit\n");
+                    printf("Error: No Tokens starts with digit\n");
                     return 4; // Unknown
                 case -2:
-                    perror("Error: No Tokens starts with \"\n");
+                    printf("Error: No Tokens starts with \"\n");
                     return 4; // Unknown
                 case -3:
-                    perror("Error: No Tokens starts with $\n");
+                    printf("Error: No Tokens starts with $\n");
                     return 4; // Unknown
                 case -4:
-                    perror("Error: No Tokens starts with ;\n");
+                    printf("Error: No Tokens starts with ;\n");
                     return 4; // Unknown
                 case -5:
-                    perror("Error: Must be a digit\n");
+                    printf("Error: Must be a digit\n");
                     return 4; // Unknown
                 default:
-                    perror("Error!");
+                    printf("Error!");
                     return 4; // Unknown
             }
         }
