@@ -50,7 +50,7 @@ void testScanner(char* file) {
 
             // Skip Spaces and Prints Token
             if (isspace(nextChar)) {
-                //if (tokenIndex > 0) { // Found a token
+                if (tokenIndex > 0) { // Found a token
                     // Set token instance string and line #
                     tokenArray[tokenCount].tokenInstance[tokenIndex] = '\0'; // Null-terminate the token string
                     tokenArray[tokenCount].lineNum = line;
@@ -68,21 +68,21 @@ void testScanner(char* file) {
 
                     tokenIndex = 0;
                     tokenCount++;
-                //}
+                }
                 continue;
             }
 
-//            // check for EOF
-//            if (nextChar == EOF) {
-//                tokenArray[tokenCount].lineNum = line;
-//                tokenArray[tokenCount].tokenInstance[tokenIndex] = '\0';
-//
-//                // Find TokenId
-//                int tokenId = scanner(tokenArray[tokenCount].tokenInstance);
-//
-//                // Print Result
-//                printf("%s\t%d\n", tokenNames[tokenId], tokenArray[tokenCount].lineNum);
-//            }
+            // check for EOF
+            if (nextChar == EOF) {
+                tokenArray[tokenCount].lineNum = line;
+                tokenArray[tokenCount].tokenInstance[tokenIndex] = '\0';
+
+                // Find TokenId
+                int tokenId = scanner(tokenArray[tokenCount].tokenInstance);
+
+                // Print Result
+                printf("%s\t%d\n", tokenNames[tokenId], tokenArray[tokenCount].lineNum);
+            }
 
             // Start of token
             tokenArray[tokenCount].tokenInstance[tokenIndex++] = nextChar;
