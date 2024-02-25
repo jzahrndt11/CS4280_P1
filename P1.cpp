@@ -46,7 +46,6 @@ int main(int argc, char* argv[]) {
     }
 
     // Test Scanner function call
-    //testScanner(file);
     testScanner();
 
     // End of main

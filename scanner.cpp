@@ -40,13 +40,6 @@ Token scanner(int line) {
     while (true) {
         getTableColumn();
 
-//        if (colNum == -1) {
-//            while (nextChar != '#') {
-//                nextChar = fgetc(filePointer);
-//            }
-//            continue;
-//        }
-
         if (state < 12 && colNum < 12) {
             nextState = tableArr[state][colNum];
             //printf("nextState = %d\n", nextState);
@@ -59,32 +52,21 @@ Token scanner(int line) {
             switch (nextState) {
                 case -1:
                     printf("Error (scanner): No Tokens starts with digit\n");
-                    //token.tokenId = Unknown;
                     exit(EXIT_FAILURE);
                 case -2:
                     printf("Error (scanner): No Tokens starts with \"\n");
-                    //token.tokenId = Unknown;
-                    //return token;
                     exit(EXIT_FAILURE);
                 case -3:
                     printf("Error (scanner): No Tokens starts with $\n");
-                    //token.tokenId = Unknown;
-                    //return token;
                     exit(EXIT_FAILURE);
                 case -4:
                     printf("Error (scanner): No Tokens starts with ;\n");
-                    //token.tokenId = Unknown;
-                    //return token;
                     exit(EXIT_FAILURE);
                 case -5:
                     printf("Error (scanner): Token must be followed by a digit\n");
-                    //token.tokenId = Unknown;
-                    //return token;
                     exit(EXIT_FAILURE);
                 default:
                     printf("Error! (scanner)");
-                    //token.tokenId = Unknown;
-                    //return token;
                     exit(EXIT_FAILURE);
             }
         }
