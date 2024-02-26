@@ -49,6 +49,7 @@ int main(int argc, char* argv[]) {
     testScanner();
 
     // End of main
+    fclose(filePointer);
     printf("End of Main\n");
     return 0;
 }

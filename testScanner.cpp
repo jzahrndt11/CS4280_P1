@@ -22,7 +22,7 @@ const char* tokenNames[] = {
 // Initialization of Global Variables
 char nextChar = 0;
 int colNum = 0;
-int tokenIndex = 0;
+//int tokenIndex = 0;
 
 void testScanner() {
     Token tokenInfo;

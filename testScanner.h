@@ -10,7 +10,7 @@
 
 extern char nextChar;
 extern int colNum;
-extern int tokenIndex;
+//extern int tokenIndex;
 extern FILE* filePointer;
 
 void testScanner();
