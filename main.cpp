@@ -50,6 +50,5 @@ int main(int argc, char* argv[]) {
 
     // End of main
     fclose(filePointer);
-    printf("End of Main\n");
     return 0;
 }

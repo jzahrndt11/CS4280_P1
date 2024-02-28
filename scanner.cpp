@@ -42,7 +42,6 @@ Token scanner(int line) {
 
         if (state < 12 && colNum < 12) {
             nextState = tableArr[state][colNum];
-            //printf("nextState = %d\n", nextState);
         } else {
             printf("Error index greater than 11");
         }
