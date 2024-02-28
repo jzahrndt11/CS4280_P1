@@ -38,7 +38,7 @@ Token scanner(int line) {
 
 
     while (true) {
-        getTableColumn();
+        int colNum = getTableColumn();
 
         if (state < 12 && colNum < 12) {
             nextState = tableArr[state][colNum];
