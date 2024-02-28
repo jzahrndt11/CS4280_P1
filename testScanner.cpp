@@ -5,6 +5,7 @@
  */
 
 #include <stdio.h>
+#include <stdlib.h>
 #include <ctype.h>
 #include "string.h"
 
@@ -104,7 +105,8 @@ int getTableColumn() {
             case EOF:
                 return 11;
             default:
-                return 11;
+                printf("Error Unknown Character\n");
+                exit(EXIT_FAILURE);
         }
     }
 }
