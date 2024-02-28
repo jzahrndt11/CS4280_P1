@@ -76,8 +76,6 @@ int getTableColumn() {
         return 1;
     } else {
         switch (nextChar) {
-            case '#':
-                return -1;
             case '%':
                 return 2;
             case '.':
