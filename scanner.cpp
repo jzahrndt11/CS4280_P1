@@ -50,22 +50,22 @@ Token scanner(int line) {
             token.tokenInstance[tokenIndex++] = nextChar;
             switch (nextState) {
                 case -1:
-                    printf("Error (scanner): No Tokens starts with digit\n");
+                    printf("Error (scanner): No Tokens starts with a { digit }\n");
                     exit(EXIT_FAILURE);
                 case -2:
-                    printf("Error (scanner): No Tokens starts with \"\n");
+                    printf("Error (scanner): No Tokens starts with a { \" }\n");
                     exit(EXIT_FAILURE);
                 case -3:
-                    printf("Error (scanner): No Tokens starts with $\n");
+                    printf("Error (scanner): No Tokens starts with a { $ }\n");
                     exit(EXIT_FAILURE);
                 case -4:
-                    printf("Error (scanner): No Tokens starts with ;\n");
+                    printf("Error (scanner): No Tokens starts with a { ; }\n");
                     exit(EXIT_FAILURE);
                 case -5:
-                    printf("Error (scanner): Token must be followed by a digit\n");
+                    printf("Error (scanner): Token { %s } must be followed by a { digit }\n", token.tokenInstance);
                     exit(EXIT_FAILURE);
                 default:
-                    printf("Error! (scanner)");
+                    printf("Error (scanner): Unknown Error");
                     exit(EXIT_FAILURE);
             }
         }
@@ -85,7 +85,7 @@ Token scanner(int line) {
                     token.tokenId = T3_Token;
                     return token;
                 default:
-                    printf("Error! (scanner)");
+                    printf("Error! (scanner): Unknown Error");
                     token.tokenId = Unknown;
                     return token;
             }

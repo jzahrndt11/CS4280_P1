@@ -103,7 +103,7 @@ int getTableColumn(int line) {
             case EOF:
                 return 11;
             default:
-                printf("Error Unknown Character %c, Line %d\n", nextChar, line);
+                printf("Error Unknown Character { %c } Line { %d }\n", nextChar, line);
                 exit(EXIT_FAILURE);
         }
     }
