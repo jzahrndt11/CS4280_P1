@@ -13,6 +13,7 @@ FILE* filePointer = nullptr;
 int main(int argc, char* argv[]) {
     char* file;
     int character;
+    bool outputFileCreated = false;
 
     // check the number of commands
     if (argc > 2) {
@@ -27,6 +28,7 @@ int main(int argc, char* argv[]) {
         // set up keyboard processing so that hereafter the input method is not relevant
         file = "out";
         FILE* outputFilePointer = fopen(file, "w");
+        outputFileCreated = true;
         character = getchar();
         while (character != EOF) {
             fputc(character, outputFilePointer);
@@ -46,7 +48,9 @@ int main(int argc, char* argv[]) {
     // Test Scanner function call
     testScanner();
 
-    system("rm out");
+    if (outputFileCreated) {
+        system("rm out");
+    }
     fclose(filePointer);
     return 0;
 }
