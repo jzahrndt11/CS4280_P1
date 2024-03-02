@@ -43,26 +43,25 @@ Token scanner(int line) {
         if (state < 12 && colNum < 12) {
             nextState = tableArr[state][colNum];
         } else {
-            printf("Error index greater than 11");
+            printf("Error (scanner) tableArr index greater can't be greater than 11");
         }
 
         if (nextState < 0) {
-            //token.tokenInstance[tokenIndex++] = nextChar;
             switch (nextState) {
                 case -1:
-                    printf("Error (scanner): No Tokens starts with a { digit }\n");
+                    printf("Error (scanner): No Tokens starts with a { digit } - Line { %d }\n", line);
                     exit(EXIT_FAILURE);
                 case -2:
-                    printf("Error (scanner): No Tokens starts with a { \" }\n");
+                    printf("Error (scanner): No Tokens starts with a { \" } - Line { %d }\n", line);
                     exit(EXIT_FAILURE);
                 case -3:
-                    printf("Error (scanner): No Tokens starts with a { $ }\n");
+                    printf("Error (scanner): No Tokens starts with a { $ } - Line { %d }\n", line);
                     exit(EXIT_FAILURE);
                 case -4:
-                    printf("Error (scanner): No Tokens starts with a { ; }\n");
+                    printf("Error (scanner): No Tokens starts with a { ; } - Line { %d }\n", line);
                     exit(EXIT_FAILURE);
                 case -5:
-                    printf("Error (scanner): Token { %s } must be followed by a { digit }\n", token.tokenInstance);
+                    printf("Error (scanner): Token { %s } must be followed by a { digit } - Line { %d }\n", token.tokenInstance, line);
                     exit(EXIT_FAILURE);
                 default:
                     printf("Error (scanner): Unknown Error");
