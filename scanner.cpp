@@ -47,7 +47,7 @@ Token scanner(int line) {
         }
 
         if (nextState < 0) {
-            token.tokenInstance[tokenIndex++] = nextChar;
+            //token.tokenInstance[tokenIndex++] = nextChar;
             switch (nextState) {
                 case -1:
                     printf("Error (scanner): No Tokens starts with a { digit }\n");
