@@ -69,7 +69,7 @@ void testScanner() {
     } while (nextChar != EOF);
 }
 
-int getTableColumn() {
+int getTableColumn(int line) {
     if (isalpha(nextChar)) {
         return 0;
     } else if (isdigit(nextChar)){
@@ -103,7 +103,7 @@ int getTableColumn() {
             case EOF:
                 return 11;
             default:
-                printf("Error Unknown Character\n");
+                printf("Error Unknown Character %c, Line %d\n", nextChar, line);
                 exit(EXIT_FAILURE);
         }
     }

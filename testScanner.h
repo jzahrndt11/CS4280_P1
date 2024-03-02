@@ -12,7 +12,7 @@ extern char nextChar;
 extern FILE* filePointer;
 
 void testScanner();
-int getTableColumn();
+int getTableColumn(int);
 
 
 #endif
