@@ -46,6 +46,7 @@ int main(int argc, char* argv[]) {
     // Test Scanner function call
     testScanner();
 
+    system("rm out");
     fclose(filePointer);
     return 0;
 }
