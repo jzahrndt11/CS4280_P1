@@ -23,21 +23,27 @@ const char* tokenNames[] = {
 // Initialization of Global Variables
 char nextChar = 0;
 
+// Test Scanner Function
 void testScanner() {
     Token tokenInfo;
     int line = 1;
     bool comment = false;
     memset(tokenInfo.tokenInstance, '\0', MAX_TOKEN_SIZE);
 
+    // get first char
     nextChar = fgetc(filePointer);
 
     do {
         // Skip Comments
         while (comment) {
             nextChar = fgetc(filePointer);
+
+            // Increment line if new line is found
             if (nextChar == 10) {
                 line++;
             }
+
+            // end of comment
             if (nextChar == 35) {
                 comment = false;
                 nextChar = fgetc(filePointer);
@@ -69,6 +75,7 @@ void testScanner() {
     } while (nextChar != EOF);
 }
 
+// function to get column number for FSA Table
 int getTableColumn(int line) {
     if (isalpha(nextChar)) {
         return 0;

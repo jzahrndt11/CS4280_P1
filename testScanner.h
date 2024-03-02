@@ -14,5 +14,4 @@ extern FILE* filePointer;
 void testScanner();
 int getTableColumn(int);
 
-
 #endif

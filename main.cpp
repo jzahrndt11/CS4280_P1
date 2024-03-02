@@ -1,7 +1,7 @@
 /*
  *  CS4280 - Project P1
  *      - by. Jeremy Zahrndt
- *      - P1.cpp
+ *      - main.cpp
  */
 #include <stdio.h>
 #include <stdlib.h>
@@ -10,11 +10,9 @@
 
 FILE* filePointer = nullptr;
 
-// Main function
 int main(int argc, char* argv[]) {
-    // Declare Variables
-        char* file;
-        int character;
+    char* file;
+    int character;
 
     // check the number of commands
     if (argc > 2) {
@@ -48,7 +46,6 @@ int main(int argc, char* argv[]) {
     // Test Scanner function call
     testScanner();
 
-    // End of main
     fclose(filePointer);
     return 0;
 }

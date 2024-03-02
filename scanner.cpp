@@ -25,7 +25,7 @@ int tableArr[12][12] = {
         { 1004, 1004, 1004, 1004, 1004, 1004, 1004, 1004, 1004, 1004, 1004, 1004 }
 };
 
-// Scanner function return Token with string and tokenId
+// Scanner function return Token struct
 Token scanner(int line) {
     Token token;
     int state = 0;
@@ -38,14 +38,17 @@ Token scanner(int line) {
 
 
     while (true) {
+        // get colNum for table
         int colNum = getTableColumn(line);
 
+        // get next state
         if (state < 12 && colNum < 12) {
             nextState = tableArr[state][colNum];
         } else {
             printf("Error (scanner) tableArr index greater can't be greater than 11");
         }
 
+        // Error states
         if (nextState < 0) {
             switch (nextState) {
                 case -1:
@@ -69,6 +72,7 @@ Token scanner(int line) {
             }
         }
 
+        // End of Token states
         if (nextState > 1000) {
             switch (nextState) {
                 case 1001:
@@ -89,6 +93,7 @@ Token scanner(int line) {
                     return token;
             }
         } else {
+            // If not an error or end of state append char to instance and get next char
             state = nextState;
             token.tokenInstance[tokenIndex++] = nextChar;
             nextChar = fgetc(filePointer);
