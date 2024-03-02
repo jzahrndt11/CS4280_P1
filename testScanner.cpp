@@ -72,7 +72,7 @@ void testScanner() {
         // Print token info
         printf("%s\t%s\t%d\n", tokenNames[tokenInfo.tokenId], tokenInfo.tokenInstance, tokenInfo.lineNum);
 
-    } while (nextChar != EOF);
+    } while (tokenInfo.tokenId != EOF_Token);
 }
 
 // function to get column number for FSA Table
