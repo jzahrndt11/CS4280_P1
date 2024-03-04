@@ -18,7 +18,7 @@ int main(int argc, char* argv[]) {
     // check the number of commands
     if (argc > 2) {
         printf("Fatal: Improper Usage!\nUsage: P0 [fileName]\n");
-        return EXIT_FAILURE;
+        exit(EXIT_FAILURE);
     }
 
     // process command line arguments
@@ -42,7 +42,7 @@ int main(int argc, char* argv[]) {
     if (filePointer == nullptr) {
         perror("Fatal: Error Opening File!\n");
         fclose(filePointer);
-        return EXIT_FAILURE;
+        exit(EXIT_FAILURE);
     }
 
     // Test Scanner function call
