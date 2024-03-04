@@ -41,7 +41,7 @@ int main(int argc, char* argv[]) {
     filePointer = fopen(file, "r");
     if (filePointer == nullptr) {
         perror("Fatal: Error Opening File!\n");
-        fclose(filePointer);
+        //fclose(filePointer);
         exit(EXIT_FAILURE);
     }
 
